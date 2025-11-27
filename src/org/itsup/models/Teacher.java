@@ -5,7 +5,7 @@ import org.itsup.enums.Gender;
 import java.util.Arrays;
 
 public class Teacher {
-    private int id; //AUTO_INCREMENT
+    private final int id; //AUTO_INCREMENT
     private String firstName;
     private String lastName;
     private String email;
@@ -31,10 +31,6 @@ public class Teacher {
 
     public int getId() {
         return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getFirstName() {

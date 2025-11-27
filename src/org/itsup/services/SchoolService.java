@@ -1,15 +1,19 @@
 package org.itsup.services;
 
 import org.itsup.dao.MemoryDatabase;
+import org.itsup.models.Parent;
+import org.itsup.models.Student;
 import org.itsup.models.Subject;
 import org.itsup.models.Teacher;
 
 public class SchoolService {
-    private Subject[] subjects = MemoryDatabase.SUBJECTS_T;
+    private Subject[] subjects = MemoryDatabase.SUBJECTS_T; //RAM
     private Teacher[] teachers = MemoryDatabase.TEACHERS_T;
+    private Parent[] parents = MemoryDatabase.PARENTS_T;
+    private Student[] students = MemoryDatabase.STUDENTS_T;
     //public static boolean error = false;
 
-    public void insertCourse(Subject subject){
+    public void insertSubject(Subject subject){
         for(Subject s: subjects){
             if (s != null && s.getTitle().toLowerCase().equals(subject.getTitle().toLowerCase())){
                 System.err.println("Subject " + subject.getTitle() + " already exists.");
@@ -26,10 +30,12 @@ public class SchoolService {
         System.err.println("Storage not enough.");
     }
 
-    public void showAllCourses(){
+    public void showAllSubjects(){
         System.out.println("Courses:");
         for (Subject subject : subjects){
-            System.out.println(subject);
+            if (subject != null){
+                System.out.println(subject);
+            }
         }
     }
 
@@ -58,8 +64,49 @@ public class SchoolService {
     }
     public void showAllTeachers(){
         System.out.println("Teachers:");
-        for (Subject subject : subjects){
-            System.out.println(subject);
+        for (Teacher teacher : teachers){
+            if (teacher != null){
+                System.out.println(teacher);
+            }
+        }
+    }
+    /**
+     * Teacher's CRUD
+     */
+    public void insertParent(Parent parent) {
+        for (int i = 0; i < parents.length; i++) {
+            if (parents[i] == null){
+                parents[i] = parent;
+                System.out.println("Parent " + parent.getLastName() + " " + parent.getFirstName() + " inserted successfully.");
+                return;
+            }
+        }
+        System.err.println("Storage not enough.");
+    }
+
+    public void showAllParents(){
+        System.out.println("Parents:");
+        for (Parent parent : parents){
+            System.out.println("\t" + parent);
+        }
+    }
+    /**
+     * Students's CRUD
+     */
+    public void insertStudent(Student student){
+        for (int i = 0; i < students.length; i++) {
+            if (students[i] == null){
+                students[i] = student;
+                System.out.println("Student " + student.getLastName() + " " + student.getFirstName() + " inserted successfully.");
+                return;
+            }
+        }
+        System.err.println("Storage not enough.");
+    }
+    public void showAllStudents(){
+        System.out.println("Students:");
+        for (Student student : students){
+            System.out.println("\t" + student);
         }
     }
 }

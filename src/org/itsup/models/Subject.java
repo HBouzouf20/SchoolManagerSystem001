@@ -1,7 +1,7 @@
 package org.itsup.models;
 
 public class Subject {
-    private int id;
+    private final int id;
     private String title;
     private int coefficient;
     private static int SUBJECT_COUNTER;

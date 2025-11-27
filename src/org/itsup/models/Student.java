@@ -3,7 +3,7 @@ package org.itsup.models;
 import org.itsup.enums.Gender;
 
 public class Student {
-    private int id;
+    private final int id;
     private String firstName;
     private String lastName;
     private String email;

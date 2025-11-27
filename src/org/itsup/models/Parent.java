@@ -5,7 +5,7 @@ import org.itsup.enums.Gender;
 import java.util.Arrays;
 
 public class Parent {
-    private int id;
+    private final int id;
     private String firstName;
     private String lastName;
     private String email;
